@@ -66,7 +66,7 @@ async def update_stats(user_id: int, is_correct: bool):
 # Обработчик команды /start
 @dp.message(Command("start"))
 async def send_welcome(message: types.Message):
-    await message.answer("Привет 02! Я викторина-бот. Напиши /quiz, чтобы начать и /stats, чтобы посмотреть свою статистику.")
+    await message.answer("Привет 03! Я викторина-бот. Напиши /quiz, чтобы начать и /stats, чтобы посмотреть свою статистику.")
 
 @dp.message(Command("stats"))
 async def show_stats(message: types.Message):
