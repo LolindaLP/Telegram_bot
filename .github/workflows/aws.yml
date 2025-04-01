@@ -72,4 +72,4 @@ jobs:
 
         # Запустить новый процесс
         nohup python3 ${{ env.SCRIPT_NAME }} > ${{ env.LOG_FILE }} 2>&1 &
-        EO
+        EOF
