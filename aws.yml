@@ -60,7 +60,7 @@ jobs:
 
     - name: Copy "test.py".py to EC2
       run: |
-        scp -i key.pem -o StrictHostKeyChecking=no test.py ${{ env.EC2_USER }}@${{ env.EC2_HOST }}:${{ env.REMOTE_PATH }}/bot.py
+        scp -i key.pem -o StrictHostKeyChecking=no test.py ${{ env.EC2_USER }}@${{ env.EC2_HOST }}:${{ env.REMOTE_PATH }}/test.py
 
 
     - name: Restart Telegram Bot
@@ -68,7 +68,6 @@ jobs:
         ssh -i key.pem -o StrictHostKeyChecking=no ${{ env.EC2_USER }}@${{ env.EC2_HOST }} << 'EOF'
         cd ${{ env.REMOTE_PATH }}
         
-        # Остановить старый процесс, если он есть
         PID=$(pgrep -f ${{ env.SCRIPT_NAME }}) && kill $PID || echo "No running process"
 
         # Запустить новый процесс
