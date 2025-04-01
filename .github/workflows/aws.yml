@@ -60,7 +60,7 @@ jobs:
 
     - name: Copy "test.py".py to EC2
       run: |
-        scp -i key.pem -o StrictHostKeyChecking=no test.py ${{ env.EC2_USER }}@${{ env.EC2_HOST }}:${{ env.REMOTE_PATH }}/test.py
+        scp -i key.pem -o StrictHostKeyChecking=no test.py ${{ env.EC2_USER }}@${{ env.EC2_HOST }}:${{ env.REMOTE_PATH }}
 
 
     - name: Restart Telegram Bot
