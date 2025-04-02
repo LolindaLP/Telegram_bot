@@ -6,7 +6,7 @@ from aiogram.filters import Command
 import random
 import html
 
-TOKEN = "7202020971:AAFiAub1-5gtAWpnVqjDflduDoASNOnm2dI"
+TOKEN = "7285331287:AAHpHUhbt6Y42BgbpOd4iVceP3xv08nYnqY"
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -45,7 +45,7 @@ def get_question():
     }
 
 async def update_stats(user_id: int, is_correct: bool):
-    async with aiosqlite.connect("quiz_bot.db") as db:
+    async with aiosqlite.connect("dev_quiz_bot.db") as db:
         await db.execute('''
             CREATE TABLE IF NOT EXISTS users (
                 user_id INTEGER PRIMARY KEY,
@@ -75,7 +75,7 @@ async def send_welcome(message: types.Message):
 async def show_stats(message: types.Message):
     user_id = message.from_user.id
 
-    async with aiosqlite.connect("quiz_bot.db") as db:
+    async with aiosqlite.connect("dev_quiz_bot.db") as db:
         async with db.execute("SELECT total_questions, correct_answers FROM users WHERE user_id = ?", (user_id,)) as cursor:
             user = await cursor.fetchone()
 
