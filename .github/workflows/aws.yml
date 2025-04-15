@@ -58,6 +58,10 @@ jobs:
         echo "${{ secrets.EC2_SSH_KEY }}" > key.pem
         chmod 600 key.pem
 
+    - name: Export BOT_TOKEN to remote server
+      run: |
+        echo "export BOT_TOKEN=${{ secrets.BOT_TOKEN }}" >> ~/.bashrc
+
     - name: Copy "test.py".py to EC2
       run: |
         scp -i key.pem -o StrictHostKeyChecking=no test.py ${{ env.EC2_USER }}@${{ env.EC2_HOST }}:${{ env.REMOTE_PATH }}
