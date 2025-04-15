@@ -11,7 +11,6 @@ TOKEN = "7202020971:AAFiAub1-5gtAWpnVqjDflduDoASNOnm2dI"
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
-# Постоянная клавиатура с кнопками "/quiz" и "/stats"
 main_keyboard = types.ReplyKeyboardMarkup(
     keyboard=[
         [types.KeyboardButton(text="/quiz")],
@@ -20,7 +19,6 @@ main_keyboard = types.ReplyKeyboardMarkup(
     resize_keyboard=True
 )
 
-# Словарь для хранения вопросов пользователей
 user_questions = {}
 
 def format_text(text: str) -> str:
@@ -69,7 +67,7 @@ async def update_stats(user_id: int, is_correct: bool):
 
 @dp.message(Command("start"))
 async def send_welcome(message: types.Message):
-    await message.answer("Привет! Я викторина-бот. Выбери действие:", reply_markup=main_keyboard)
+    await message.answer("Hi! I'm a quiz-bot. Pick an action:", reply_markup=main_keyboard)
 
 @dp.message(Command("stats"))
 async def show_stats(message: types.Message):
@@ -81,9 +79,9 @@ async def show_stats(message: types.Message):
 
     if user:
         total, correct = user
-        await message.answer(f"📊 Твоя статистика:\nВсего вопросов: {total}\nПравильных ответов: {correct}", reply_markup=main_keyboard)
+        await message.answer(f"📊 Your statistics:\nTotal questions: {total}\nCorrect answers: {correct}", reply_markup=main_keyboard)
     else:
-        await message.answer("Ты еще не отвечал на вопросы. Напиши /quiz, чтобы начать!", reply_markup=main_keyboard)
+        await message.answer("You haven't answered the questions yet. Write /quiz to get started!", reply_markup=main_keyboard)
 
 @dp.message(Command("quiz"))
 async def quiz(message: types.Message):
@@ -113,13 +111,13 @@ async def handle_answer(message: types.Message):
         await update_stats(user_id, is_correct)
 
         if is_correct:
-            await message.answer("✅ Правильно!", reply_markup=types.ReplyKeyboardRemove())
+            await message.answer("✅ That's right!", reply_markup=types.ReplyKeyboardRemove())
         else:
-            await message.answer(f"❌ Неправильно! Правильный ответ: {correct_answer}", reply_markup=types.ReplyKeyboardRemove())
+            await message.answer(f"❌ Wrong! The correct answer is: {correct_answer}", reply_markup=types.ReplyKeyboardRemove())
 
-        await message.answer("Выбери действие:", reply_markup=main_keyboard)
+        await message.answer("Pick an action:", reply_markup=main_keyboard)
     else:
-        await message.answer("Чтобы начать викторину, выбери /quiz.", reply_markup=main_keyboard)
+        await message.answer("To start a quiz, select /quiz.", reply_markup=main_keyboard)
 
 async def main():
     print("Бот запущен...")
