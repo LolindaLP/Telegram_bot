@@ -112,7 +112,7 @@ async def handle_answer(message: types.Message):
         await update_stats(user_id, is_correct)
 
         if is_correct:
-            await message.answer("✅ That's right!", reply_markup=types.ReplyKeyboardRemove())
+            await message.answer("✅ That's right!:3", reply_markup=types.ReplyKeyboardRemove())
         else:
             await message.answer(f"❌ Wrong! The correct answer is: {correct_answer}", reply_markup=types.ReplyKeyboardRemove())
 
