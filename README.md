@@ -1,5 +1,7 @@
 # 🤖 Telegram Bot on AWS EC2
 
+t.me/Funny_quiz_ledeneva_bot
+
 This project is a simple Telegram bot deployed on an Amazon EC2 instance running Amazon Linux 2023. The bot is written in Python and managed with a minimal deployment setup using GitHub Actions.
 
 ## 🧩 Project Overview
