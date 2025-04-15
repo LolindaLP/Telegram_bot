@@ -5,8 +5,9 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 import random
 import html
+import os
 
-TOKEN = "7202020971:AAFiAub1-5gtAWpnVqjDflduDoASNOnm2dI"
+TOKEN = os.getenv("BOT_TOKEN")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
