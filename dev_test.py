@@ -6,8 +6,6 @@ from aiogram.filters import Command
 import random
 import html
 
-TOKEN = "7285331287:AAHpHUhbt6Y42BgbpOd4iVceP3xv08nYnqY"
-
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
